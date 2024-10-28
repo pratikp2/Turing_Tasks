@@ -1,57 +1,55 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include <fstream>
-#include <spdlog/spdlog.h>
-#include <spdlog/sinks/rotating_file_sink.h>
 
-// Function to perform a sensitive operation
-void performSensitiveOperation(const std::string& input) {
-  if (input.empty()) {
-    throw std::runtime_error("Invalid input provided.");
+class SecureException : public std::exception {
+public:
+  SecureException(const std::string& errorCode, const std::string& userMessage, const std::string& logMessage) :
+    errorCode_(errorCode), userMessage_(userMessage), logMessage_(logMessage) {}
+
+  const char* what() const noexcept override {
+    return userMessage_.c_str();
   }
 
-  // Simulate a sensitive operation and throw an exception
-  if (input == "secret") {
-    throw std::runtime_error("Unauthorized access attempted.");
+  std::string getErrorCode() const {
+    return errorCode_;
   }
 
-  std::cout << "Sensitive operation performed successfully for: " << input << std::endl;
+  std::string getLogMessage() const {
+    return logMessage_;
+  }
+
+private:
+  std::string errorCode_;
+  std::string userMessage_;
+  std::string logMessage_;
+};
+
+void validateInput(const std::string& input) {
+  // Simulate validation logic and throw an exception with appropriate messages
+  if (input.find("sensitive") != std::string::npos) {
+    throw SecureException(
+      "ERR_INVALID_INPUT",
+      "Invalid input data. Please check the provided information and try again.",
+      "Invalid input contains sensitive data: " + input
+    );
+  }
 }
 
 int main() {
+  std::string input;
+  std::cout << "Enter some data: ";
+  std::getline(std::cin, input);
+
   try {
-    // Initialize secure logging
-    std::string log_file_path = "application.log";
-    size_t max_log_size = 1024 * 1024 * 5; // 5MB
-    int num_log_files = 3;
+    validateInput(input);
+    std::cout << "Input valid!" << std::endl;
+  } catch (const SecureException& e) {
+    std::cout << "Error: " << e.what() << std::endl;
 
-    auto sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(log_file_path, max_log_size, num_log_files);
-    auto logger = std::make_shared<spdlog::logger>("my_logger", sink);
-    spdlog::set_pattern("%Y-%m-%d %H:%M:%S.%e [%n] %v");
-    spdlog::set_default_logger(logger);
-
-    std::string input;
-    std::cout << "Enter input: ";
-    std::getline(std::cin, input);
-
-    performSensitiveOperation(input);
-
-  } catch (const std::exception& e) {
-    // Handle error securely and log it
-    std::string errorMessage = "An error occurred: ";
-    errorMessage += e.what();
-
-    // Redact sensitive information before logging
-    // For demonstration, we'll just replace "secret" with "[REDACTED]"
-    size_t pos = errorMessage.find("secret");
-    if (pos != std::string::npos) {
-      errorMessage.replace(pos, 6, "[REDACTED]");
-    }
-
-    SPDLOG_ERROR(errorMessage);
-    std::cerr << "Error: " << errorMessage << std::endl;
+    // Log the error detail securely for analysis
+    std::cerr << "Logged Error: " << e.getLogMessage() << std::endl;
+    return 1;
   }
-
   return 0;
 }

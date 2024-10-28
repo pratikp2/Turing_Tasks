@@ -2,36 +2,41 @@
 #include <string>
 #include <stdexcept>
 
-// Function to perform a sensitive operation (for demonstration purposes)
-void performSensitiveOperation(const std::string& input) {
-  if (input.empty()) {
-    throw std::runtime_error("Invalid input provided.");
+// Custom exception class for secure error handling
+class SecureException : public std::exception {
+public:
+  SecureException(const std::string& errorCode, const std::string& userMessage) : errorCode_(errorCode), userMessage_(userMessage) {}
+  const char* what() const noexcept override {
+    return userMessage_.c_str();
+  }
+  std::string getErrorCode() const {
+    return errorCode_;
   }
 
-  // Simulate a sensitive operation and throw an exception for an error
-  if (input == "secret") {
-    throw std::runtime_error("Unauthorized access attempted.");
-  }
+private:
+  std::string errorCode_;
+  std::string userMessage_;
+};
 
-  std::cout << "Sensitive operation performed successfully for: " << input << std::endl;
+void someFunctionThatMayFail() {
+  // Simulate a failure condition and throw a SecureException
+  throw SecureException("ERR_DATA_PROCESSING", "An error occurred during data processing. Please try again later.");
 }
 
 int main() {
   try {
-    std::string input;
-    std::cout << "Enter input: ";
-    std::getline(std::cin, input);
+    someFunctionThatMayFail();
+  } catch (const SecureException& e) {
+    // Handle the error securely
+    std::cout << "Error: " << e.what() << std::endl;
 
-    performSensitiveOperation(input);
-
+    // Log the error code for analysis without revealing details
+    std::cerr << "Logged Error Code: " << e.getErrorCode() << std::endl;
+    return 1;
   } catch (const std::exception& e) {
-    // Handle error securely
-    std::string errorMessage = "An error occurred: ";
-    errorMessage += e.what();
-
-    // Display a generic error message to the user
-    std::cerr << "Error: " << errorMessage << std::endl;
+    // Handle other standard exceptions
+    std::cout << "An unknown error occurred: " << e.what() << std::endl;
+    return 1;
   }
-
   return 0;
 }
