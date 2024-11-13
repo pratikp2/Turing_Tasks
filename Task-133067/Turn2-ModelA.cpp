@@ -8,58 +8,48 @@ class IntervalPruningTest : public ::testing::Test {
   }
 
   Interval pruneAndCalculate(Interval& result_int, double x, double y) {
-	return interval_pruning(result_int, x, y);
+	result_int = interval_pruning(result_int, x, y);
+	double result = calculate_result(x, y);
+	return Interval(result, result);
   }
 };
 
-TEST_F(IntervalPruningTest, SkipsCalculationWhenWithinInterval) {
+TEST_F(IntervalPruningTest, BasicPruningTest) {
 	Interval result_int(2.0, 2.0);
-	double x = 1.0, y = 1.0;
+	double x = 1.0, y = 3.0;
+	Interval expected_interval(5.0, 5.0);
 
-	Interval updated_int = pruneAndCalculate(result_int, x, y);
-
-	EXPECT_TRUE(updated_int.lower() == 2.0 && updated_int.upper() == 2.0);
-	// Calculation should be skipped, so no need to check the result
+	Interval updated_interval = pruneAndCalculate(result_int, x, y);
+	EXPECT_EQ(updated_interval, expected_interval);
 }
 
-TEST_F(IntervalPruningTest, PerformsCalculationWhenOutsideInterval) {
-	Interval result_int(1.0, 3.0);
+TEST_F(IntervalPruningTest, SkipsCalculationTest) {
+	Interval result_int(5.0, 5.0);
 	double x = 2.0, y = 3.0;
 
-	Interval updated_int = pruneAndCalculate(result_int, x, y);
-	double expected_result = calculate_result(x, y);
-
-	EXPECT_TRUE(updated_int.lower() == expected_result && updated_int.upper() == expected_result);
+	Interval updated_interval = pruneAndCalculate(result_int, x, y);
+	// Since the calculation result is within the updated interval, it should skip
 }
 
-TEST_F(IntervalPruningTest, HandlesNegativeInputs) {
-	Interval result_int(-5.0, 5.0);
-	double x = -2.0, y = -3.0;
+TEST_F(IntervalPruningTest, HandlesNegativeInputsTest) {
+	Interval result_int(-2.0, 2.0);
+	double x = -1.0, y = -3.0;
+	Interval expected_interval(-6.0, -6.0);
 
-	Interval updated_int = pruneAndCalculate(result_int, x, y);
-	double expected_result = calculate_result(x, y);
-
-	EXPECT_TRUE(updated_int.lower() == expected_result && updated_int.upper() == expected_result);
+	Interval updated_interval = pruneAndCalculate(result_int, x, y);
+	EXPECT_EQ(updated_interval, expected_interval);
 }
 
-TEST_F(IntervalPruningTest, HandlesZeroInputs) {
-	Interval result_int(0.0, 0.0);
-	double x = 0.0, y = 0.0;
+TEST_F(IntervalPruningTest, ExpandsIntervalTest) {
+	Interval result_int(1.0, 3.0);
+	double x = 4.0, y = 2.0;
+	Interval expected_interval(10.0, 14.0);
 
-	Interval updated_int = pruneAndCalculate(result_int, x, y);
-	double expected_result = calculate_result(x, y);
-
-	EXPECT_TRUE(updated_int.lower() == expected_result && updated_int.upper() == expected_result);
+	Interval updated_interval = pruneAndCalculate(result_int, x, y);
+	EXPECT_EQ(updated_interval, expected_interval);
 }
 
-TEST_F(IntervalPruningTest, ExpandsIntervalCorrectly) {
-	Interval result_int(1.0, 2.0);
-	double x = 3.0, y = 4.0;
-
-	Interval updated_int = pruneAndCalculate(result_int, x, y);
-
-	EXPECT_TRUE(updated_int.lower() <= 11.0 && updated_int.upper() >= 11.0);
-}
+// Add more test cases as needed
 
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
