@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Code_Setup/Turing/Turing_Tasks/main.cpp" "CMakeFiles/MyApp.dir/main.cpp.o" "gcc" "CMakeFiles/MyApp.dir/main.cpp.o.d"
+  "/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/src/main.c" "CMakeFiles/my_project.dir/src/main.c.o" "gcc" "CMakeFiles/my_project.dir/src/main.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

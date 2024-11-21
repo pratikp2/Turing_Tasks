@@ -57,23 +57,13 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Code_Setup/Turing/Turing_Tasks
+CMAKE_SOURCE_DIR = /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Code_Setup/Turing/Turing_Tasks/build
+CMAKE_BINARY_DIR = /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -97,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Code_Setup/Turing/Turing_Tasks/build/CMakeFiles /mnt/c/Code_Setup/Turing/Turing_Tasks/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/build/CMakeFiles /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Code_Setup/Turing/Turing_Tasks/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -127,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named MyApp
+# Target rules for targets named my_project
 
 # Build rule for target.
-MyApp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyApp
-.PHONY : MyApp
+my_project: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_project
+.PHONY : my_project
 
 # fast build rule for target.
-MyApp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/build
-.PHONY : MyApp/fast
+my_project/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/build
+.PHONY : my_project/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.c.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/main.c.o
+.PHONY : src/main.c.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.c.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/main.c.i
+.PHONY : src/main.c.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.c.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/main.c.s
+.PHONY : src/main.c.s
 
 # Help Target
 help:
@@ -171,11 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... MyApp"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... my_project"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

@@ -1,2 +1,2 @@
-# Empty dependencies file for MyApp.
+# Empty dependencies file for EmbeddedProject.
 # This may be replaced when dependencies are built.

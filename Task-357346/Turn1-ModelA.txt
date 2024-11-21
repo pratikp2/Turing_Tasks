@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(EmbeddedProject)
+
+# Set the target architecture
+set(CMAKE_SYSTEM_NAME ARM)
+set(CMAKE_SYSTEM_VERSION 1)
+
+# Include the toolchain file
+set(CMAKE_TOOLCHAIN_FILE tools/gcc-arm-none-eabi/arm-none-eabi.cmake)
+
+# Specify the build directory
+set(CMAKE_BUILD_TYPE Release)  # Options: Debug, Release, RelWithDebInfo, MinSizeRel
+
+# Find necessary packages if any
+find_package(Boost REQUIRED COMPONENTS system)
+
+# Include directories
+include_directories(include)
+
+# Add source files
+set(SOURCES
+    main.cpp
+    utils.cpp
+    hardware.cpp
+)
+
+# Add executables or libraries
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+# Set compiler options
+set(CMAKE_CXX_FLAGS "-O3 -g -Wall -fno-exceptions -fno-rtti -mtune=cortex-m4")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -g -Wall -fno-exceptions -fno-rtti -mtune=cortex-m4 -s")
+
+# Additional build commands
+target_link_libraries(${PROJECT_NAME} Boost::system)
+
+# Configure include paths and other settings
+if (CMAKE_SYSTEM_NAME STREQUAL "ARM")
+    set(CMAKE_CXX_FLAGS_INIT "-D_ARM_")
+endif()

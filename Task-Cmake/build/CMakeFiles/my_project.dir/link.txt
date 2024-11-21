@@ -1,0 +1,1 @@
+/path/to/your/arm-gcc -O3 -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra /path/to/your/arm-ld CMakeFiles/my_project.dir/src/main.c.o -o my_project   -L/path/to/thirdparty_libraries  -Wl,-rpath,/path/to/thirdparty_libraries -lvendor_lib_1 -lvendor_lib_2 
