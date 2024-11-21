@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.10)
+project(example CXX)
+
+# Set the minimum C++ standard version
+set(CMAKE_CXX_STANDARD 17)
+
+# Find the required libraries (e.g., Boost, OpenCV)
+find_package(Boost REQUIRED COMPONENTS system filesystem thread)
+find_package(OpenCV REQUIRED)
+
+# Add the source files to the project
+add_executable(example main.cpp)
+
+# Link the required libraries
+target_link_libraries(example PRIVATE Boost::system Boost::filesystem Boost::thread ${OpenCV_LIBS})
+
+# Configure code review tools (e.g., Cppcheck, Clang-Tidy)
+include(Cppcheck)
+cppcheck_add_arguments(example "-j4" "-I${CMAKE_CURRENT_SOURCE_DIR}")
+
+include(ClangTidy)
+clang_tidy(example src/ -header-filter=".*\.h" -checks="-*,readability-function-calls,readability-function-size" -std=c++17)

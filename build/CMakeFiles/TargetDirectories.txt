@@ -1,0 +1,4 @@
+/mnt/c/Code_Setup/Turing/Turing_Tasks/build/CMakeFiles/MyApp.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/build/CMakeFiles/test.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/build/CMakeFiles/edit_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/build/CMakeFiles/rebuild_cache.dir
