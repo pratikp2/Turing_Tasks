@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file,CMakeFiles/myapp.dir/link.d CMakeFiles/myapp.dir/main.cpp.o CMakeFiles/myapp.dir/src/file1.cpp.o CMakeFiles/myapp.dir/src/file2.cpp.o -o myapp
