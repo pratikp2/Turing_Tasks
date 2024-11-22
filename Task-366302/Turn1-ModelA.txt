@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(MyCppProject LANGUAGES CXX)
+
+# Set the C++ standard to 11
+set(CMAKE_CXX_STANDARD 11)
+
+# Require the C++11 standard; this will throw an error if the compiler doesn't support it
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Optionally, check if the compiler supports the specified standard
+if(NOT CMAKE_CXX_STANDARD_SUPPORTED)
+    message(FATAL_ERROR "C++11 standard not supported by the compiler.")
+endif()
+
+# Add an executable target
+add_executable(my_executable main.cpp)
+
+# Optionally, set the C++ standard for a specific target
+target_compile_options(my_executable PRIVATE -std=c++11)
+
+# Add a library target
+add_library(my_library source1.cpp source2.cpp)
+
+# Optionally, set the C++ standard for a specific target
+target_compile_options(my_library PRIVATE -std=c++11)
+
+# Add installation commands (optional)
+install(TARGETS my_executable my_library DESTINATION bin)

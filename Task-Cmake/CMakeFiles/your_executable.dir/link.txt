@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file,CMakeFiles/your_executable.dir/link.d CMakeFiles/your_executable.dir/main.cpp.o CMakeFiles/your_executable.dir/source1.cpp.o CMakeFiles/your_executable.dir/source2.cpp.o -o your_executable  -l<your_dependencies>

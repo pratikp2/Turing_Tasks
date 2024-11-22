@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(YourProject)
+
+# Set the C++ standard to C++11
+set(CMAKE_CXX_STANDARD 11)
+
+# Enable strict compliance with the C++ standard
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Add your source files here
+add_executable(your_executable main.cpp source1.cpp source2.cpp)
+
+# Add any necessary dependencies here
+target_link_libraries(your_executable PUBLIC <your_dependencies>)
