@@ -1,4 +1,8 @@
-/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/CMakeFiles/my_executable.dir
-/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/CMakeFiles/my_library.dir
 /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/CMakeFiles/edit_cache.dir
 /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/CMakeFiles/rebuild_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/app/CMakeFiles/app.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/app/CMakeFiles/edit_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/app/CMakeFiles/rebuild_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/lib/CMakeFiles/Lib.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/lib/CMakeFiles/edit_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/lib/CMakeFiles/rebuild_cache.dir

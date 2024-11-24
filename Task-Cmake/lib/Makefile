@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/CMakeFiles /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/CMakeFiles /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/lib//CMakeFiles/progress.marks
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,44 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named app
+# Convenience name for target.
+lib/CMakeFiles/Lib.dir/rule:
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/CMakeFiles/Lib.dir/rule
+.PHONY : lib/CMakeFiles/Lib.dir/rule
 
-# Build rule for target.
-app: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 app
-.PHONY : app
-
-# fast build rule for target.
-app/fast:
-	$(MAKE) $(MAKESILENT) -f app/CMakeFiles/app.dir/build.make app/CMakeFiles/app.dir/build
-.PHONY : app/fast
-
-#=============================================================================
-# Target rules for targets named Lib
-
-# Build rule for target.
-Lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Lib
+# Convenience name for target.
+Lib: lib/CMakeFiles/Lib.dir/rule
 .PHONY : Lib
 
 # fast build rule for target.
 Lib/fast:
-	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Lib.dir/build.make lib/CMakeFiles/Lib.dir/build
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Lib.dir/build.make lib/CMakeFiles/Lib.dir/build
 .PHONY : Lib/fast
+
+lib.o: lib.cpp.o
+.PHONY : lib.o
+
+# target to build an object file
+lib.cpp.o:
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Lib.dir/build.make lib/CMakeFiles/Lib.dir/lib.cpp.o
+.PHONY : lib.cpp.o
+
+lib.i: lib.cpp.i
+.PHONY : lib.i
+
+# target to preprocess a source file
+lib.cpp.i:
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Lib.dir/build.make lib/CMakeFiles/Lib.dir/lib.cpp.i
+.PHONY : lib.cpp.i
+
+lib.s: lib.cpp.s
+.PHONY : lib.s
+
+# target to generate assembly for a file
+lib.cpp.s:
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Lib.dir/build.make lib/CMakeFiles/Lib.dir/lib.cpp.s
+.PHONY : lib.cpp.s
 
 # Help Target
 help:
@@ -151,7 +163,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Lib"
-	@echo "... app"
+	@echo "... lib.o"
+	@echo "... lib.i"
+	@echo "... lib.s"
 .PHONY : help
 
 
@@ -163,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

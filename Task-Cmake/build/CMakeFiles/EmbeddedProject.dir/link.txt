@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -g -Wall -fno-exceptions -fno-rtti -mtune=cortex-m4 -O3 -g -Wall -fno-exceptions -fno-rtti -mtune=cortex-m4 -s CMakeFiles/EmbeddedProject.dir/main.cpp.o CMakeFiles/EmbeddedProject.dir/utils.cpp.o CMakeFiles/EmbeddedProject.dir/hardware.cpp.o -o EmbeddedProject  /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0 

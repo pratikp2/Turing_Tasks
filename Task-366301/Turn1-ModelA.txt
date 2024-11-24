@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.10)
+project(ModularProject)
+
+# Define a variable to track the branch
+set(BRANCH_NAME "${GIT_BRANCH_NAME}")
+
+if(BRANCH_NAME STREQUAL "main")
+    set(BUILD_CONFIG "Development")
+elseif(BRANCH_NAME STREQUAL "release")
+    set(BUILD_CONFIG "Production")
+else()
+    message(WARNING "Unknown branch: ${BRANCH_NAME}")
+    set(BUILD_CONFIG "Debug")
+endif()
+
+# Add subdirectories
+add_subdirectory(app)
+add_subdirectory(lib)
+
+# Configure targets based on BUILD_CONFIG
+if(BUILD_CONFIG STREQUAL "Development")
+    message("Building for Development")
+    # Add additional development flags or targets here
+elseif(BUILD_CONFIG STREQUAL "Production")
+    message("Building for Production")
+    # Add additional production flags or targets here
+endif()

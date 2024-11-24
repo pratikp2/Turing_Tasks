@@ -1,3 +1,0 @@
-/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/build/CMakeFiles/Example.dir
-/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/build/CMakeFiles/edit_cache.dir
-/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/build/CMakeFiles/rebuild_cache.dir
