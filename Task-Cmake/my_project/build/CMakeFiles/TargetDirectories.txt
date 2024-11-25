@@ -1,0 +1,16 @@
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/CMakeFiles/superbuild.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/CMakeFiles/all_tests.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/CMakeFiles/test.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/CMakeFiles/edit_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module1/CMakeFiles/module1.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module1/CMakeFiles/test.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module1/CMakeFiles/edit_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module1/CMakeFiles/rebuild_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module1/tests/CMakeFiles/test_module1.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module1/tests/CMakeFiles/test.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module1/tests/CMakeFiles/edit_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module1/tests/CMakeFiles/rebuild_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module2/CMakeFiles/test.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module2/CMakeFiles/edit_cache.dir
+/mnt/c/Code_Setup/Turing/Turing_Tasks/Task-Cmake/my_project/build/module2/CMakeFiles/rebuild_cache.dir
