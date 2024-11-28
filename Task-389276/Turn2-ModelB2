@@ -1,0 +1,32 @@
+// Correct implementation using shared_ptr
+class Subject {
+private:
+    std::shared_ptr<Observer> observer;
+
+public:
+    void attach(std::shared_ptr<Observer> obs) {
+        observer = obs;
+    }
+
+    void detach(std::shared_ptr<Observer> obs) {
+        observer.reset();
+    }
+};
+
+class Observer {
+public:
+    Observer() {}
+    ~Observer() {}
+    void update() {}
+};
+
+int main() {
+    Subject subject;
+    std::shared_ptr<Observer> observer = std::make_shared<Observer>();
+
+    subject.attach(observer);
+
+    // The observer will be automatically deleted when the last shared_ptr referencing it is destroyed
+
+    return 0;
+}
