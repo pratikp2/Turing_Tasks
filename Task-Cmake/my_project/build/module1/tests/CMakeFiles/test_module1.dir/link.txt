@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file,CMakeFiles/test_module1.dir/link.d CMakeFiles/test_module1.dir/test_module1.cpp.o -o test_module1  -lModule1 /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a

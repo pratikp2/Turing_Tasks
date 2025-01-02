@@ -1,8 +1,0 @@
-cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
-
-project(MyProject)
-
-set(CMAKE_CXX_STANDARD 14)
-
-add_subdirectory(module1)
-add_subdirectory(module2)
