@@ -1,71 +1,75 @@
 #include <iostream>
-#include <memory>
+#include <vector>
 #include <stdexcept>
-#include <algorithm> // For std::copy
 
-template<typename T>
-class Array {
+template <typename T>
+class PointerVector {
 public:
-    // Constructor allocating and initializing the array
-    Array(size_t size) : _size(size), _data(new T[size]) {
-        std::fill(_data.get(), _data.get() + _size, T());
+    PointerVector() = default;
+
+    // Add an element to the vector
+    void push_back(const T& value) {
+        data_.push_back(value);
     }
-    
-    // Copy constructor
-    Array(const Array& other) : _size(other._size), _data(new T[other._size]) {
-        std::copy(other._data.get(), other._data.get() + other._size, _data.get());
-    }
-    
-    // Move constructor
-    Array(Array&& other) noexcept : _size(other._size), _data(std::move(other._data)) {
-        other._size = 0;
-    }
-    
-    // Access element using pointer arithmetic
-    T& operator[](size_t index) {
-        if (index >= _size) throw std::out_of_range("Index out of range");
-        return *(_data.get() + index);
-    }
-    
-    // Const access for read-only
-    const T& operator[](size_t index) const {
-        if (index >= _size) throw std::out_of_range("Index out of range");
-        return *(_data.get() + index);
-    }
-    
-    size_t size() const { return _size; }
-    
-    // A simple summation function using pointers
-    T sum() const {
-        T total = T();
-        for (size_t i = 0; i < _size; ++i) {
-            total += *(_data.get() + i);
+
+    // Get a pointer to the element at the specified index
+    T* at(size_t index) {
+        if (index >= data_.size()) {
+            throw std::out_of_range("Index out of range");
         }
-        return total;
+        return &data_[index];
+    }
+
+    // Get a pointer to the first element
+    T* begin() {
+        return data_.empty() ? nullptr : &data_[0];
+    }
+
+    // Get a pointer to one past the last element
+    T* end() {
+        return data_.empty() ? nullptr : &data_[0] + data_.size();
+    }
+
+    // Get the number of elements in the vector
+    size_t size() const {
+        return data_.size();
+    }
+
+    // Print all elements
+    void print() const {
+        for (const auto& elem : data_) {
+            std::cout << elem << " ";
+        }
+        std::cout << std::endl;
     }
 
 private:
-    size_t _size;                      // Size of the array
-    std::unique_ptr<T[]> _data;       // Pointer to the data
+    std::vector<T> data_;
 };
 
 int main() {
-    try {
-        Array<int> arr(5); // Create an array of 5 integers
-        for (size_t i = 0; i < arr.size(); ++i) {
-            arr[i] = (int)i + 1; // Initialize array with 1 to 5
-        }
-        
-        std::cout << "Array elements: ";
-        for (size_t i = 0; i < arr.size(); ++i) {
-            std::cout << arr[i] << " ";
-        }
-        std::cout << "\n";
-        
-        std::cout << "Sum of elements: " << arr.sum() << "\n"; // Output the sum
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+    PointerVector<int> pvec;
+
+    // Adding elements to the PointerVector
+    for (int i = 1; i <= 5; ++i) {
+        pvec.push_back(i);
     }
+
+    // Printing original elements
+    std::cout << "Original elements: ";
+    pvec.print();
+
+    // Modify elements via pointer-based access
+    for (size_t i = 0; i < pvec.size(); ++i) {
+        int* ptr = pvec.at(i);
+        if (ptr) {
+            *ptr *= 2;  // Double each element
+        }
+    }
+
+    // Printing modified elements
+    std::cout << "Modified elements: ";
+    pvec.print();
 
     return 0;
 }

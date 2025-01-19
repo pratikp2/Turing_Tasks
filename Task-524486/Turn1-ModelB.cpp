@@ -1,49 +1,53 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
-class ArrayProcessor {
+template <typename T>
+class PointerVector : public std::vector<T> {
 public:
-    explicit ArrayProcessor(const std::vector<int>& data) : data_(&data.front()), size_(data.size()) {}
+    using typename std::vector<T>::iterator;
+    using typename std::vector<T>::const_iterator;
 
-    void squareElements() {
-        for (int* it = data_, *end = data_ + size_; it != end; ++it) {
-            *it *= *it;
-        }
+    // Function to get the raw pointer to the underlying data
+    T* dataPointer() {
+        return this->data();
     }
 
-    void sumElements() {
-        sum_ = 0;
-        for (int* it = data_, *end = data_ + size_; it != end; ++it) {
-            sum_ += *it;
-        }
+    const T* dataPointer() const {
+        return this->data();
     }
 
-    int getSum() const {
-        return sum_;
+    // Function to get the pointer to the element at a specific index
+    T* pointerAt(size_t index) {
+        return &(this->at(index));
     }
 
-private:
-    const int* data_;
-    size_t size_;
-    int sum_ = 0;
+    const T* pointerAt(size_t index) const {
+        return &(this->at(index));
+    }
 };
 
+// Example usage of the custom pointer-based vector
 int main() {
-    std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    PointerVector<int> prices = {100, 105, 102, 108, 103};
 
-    ArrayProcessor processor(data);
-
-    processor.squareElements();
-
-    // Display the modified data using iterators
-    for (const int& element : data) {
-        std::cout << element << " ";
+    std::cout << "Original prices: \n";
+    for (const int& price : prices) {
+        std::cout << price << " ";
     }
-    std::cout << std::endl;
+    std::cout << "\n";
+    // Using pointer-based access for faster operations
+    int* firstPricePointer = prices.pointerAt(0);
+    int* lastPricePointer = prices.pointerAt(prices.size() - 1);
 
-    processor.sumElements();
-    std::cout << "Sum of squared elements: " << processor.getSum() << std::endl;
+    // Performing operations using pointers
+    *firstPricePointer = 98;
+    *lastPricePointer = 110;
+
+    std::cout << "Modified prices: \n";
+    for (const int& price : prices) {
+        std::cout << price << " ";
+    }
+    std::cout << "\n";
 
     return 0;
 }
