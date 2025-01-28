@@ -1,0 +1,2 @@
+Warning: Received unrecognized status code: 0. This might indicate a malfunctioning sensor or incorrect input value.
+Warning: Received unrecognized status code: 500. This might indicate a malfunctioning sensor or incorrect input value.
