@@ -1,6 +1,0 @@
-2025-01-28 20:18:15 [INFO] Processing packet with protocol: TCP
-2025-01-28 20:18:15 [INFO] Entering handleTCP()
-2025-01-28 20:18:15 [INFO] Exiting handleTCP()
-2025-01-28 20:31:13 [INFO] Processing packet with protocol: TCP
-2025-01-28 20:31:13 [INFO] Entering handleTCP()
-2025-01-28 20:31:13 [INFO] Exiting handleTCP()
